@@ -1,3 +1,29 @@
+/**!
+ * ConsentGuard Cookie Banner
+ * 
+ * Developed by Signal ID, LLC
+ * 
+ * Version: 1.0
+ * 
+ * License: Signal ID, LLC Custom License
+ * 
+ * This Software is provided "AS IS," without warranty of any kind, express or implied, 
+ * including but not limited to the warranties of merchantability, fitness for a particular 
+ * purpose, and non-infringement. In no event shall Signal ID, LLC be liable for any claim, 
+ * damages, or other liability, whether in an action of contract, tort, or otherwise, arising 
+ * from, out of, or in connection with the Software or the use or other dealings in the Software.
+ * 
+ * You must include clear attribution to Signal ID, LLC and the product name ConsentGuard in any 
+ * use of the Software. This includes, but is not limited to:
+ * - Displaying the Signal ID, LLC logo and the ConsentGuard name in the user interface of the Software.
+ * - Including attribution in any documentation, promotional materials, or web pages that feature the Software.
+ * 
+ * Contact:
+ * Signal ID, LLC
+ * support@heropixel.com
+ * 1317 Edgewater Drive Ste. 7039
+ * Orlando, FL 32804
+ */
 (function() {
     class ConsentGuard {
         constructor() {
