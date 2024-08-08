@@ -32,6 +32,7 @@
                 writeKey: '',
                 jitsuUrl: false,
                 privacyPolicyLink: '#',
+                bannerStatement: 'We use cookies to enhance your browsing experience. By continuing, you agree to our ',
                 cookiePreferencesKey: 'cookie_preferences',
                 acceptColor: '#28A745',
                 nuetralColor: '#6c757d',
@@ -113,7 +114,7 @@
                 <div id="cookie_banner_control_4512451245" style="position: fixed; bottom: 30px; left: 30px; right: 30px; height: 80px; background-color: ${this.backgroundColor}; color: #000000; display: flex; align-items: center; justify-content: space-between; padding:10px 50px 10px 50px; box-shadow: 0 34px 33px rgba(0, 0, 0, 0.3); z-index: 6000001; font-size: 14px; border: 1px solid #d4d4d4; margin: 0; font-family: Arial, sans-serif;">
                   <div style="flex-grow: 1; max-width: 70%; font-size: 14px; line-height: 1.5; color: #000000;">
                     <p style="margin: 0; padding: 0; font-size: 14px; line-height: 1.5; color: #000000;">
-                      We use cookies to enhance your browsing experience. By continuing, you agree to our <a href="${this.privacyPolicyLink}" style="color: #007bff; text-decoration: none; font-size: 14px;">Cookie Policy</a>.
+                      ${this.bannerStatement} <a href="${this.privacyPolicyLink}" style="color: #007bff; text-decoration: none; font-size: 14px;">Privacy Policy</a>.
                     </p>
                   </div>
                   <div style="display: flex; gap: 10px;">
@@ -701,5 +702,53 @@
     
     // Define the new custom element
     customElements.define('script-explicit', ScriptExplicit);
+    
+    
+    /**
+     * Displays the Manage Preferences button on your website
+     * 
+     * 
+     */
+    class ButtonConsentGuard extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+            this.render();
+        }
+    
+        connectedCallback() {
+            this.shadowRoot.querySelector('button').addEventListener('click', () => {
+                window.consent.showManagePreferences();
+            });
+        }
+        
+        render() {
+            const buttonText = this.innerHTML.trim() || 'Manage Cookie Preferences';
+            this.shadowRoot.innerHTML = `
+                <style>
+                    button {
+                        background-color: ${window.cookieConsentOptions.preferenceColor || '#3482F3'};
+                        margin-top: 20px;
+                        font-size: 12px; 
+                        line-height: 1.5em; 
+                        padding: 21px 10px 19px; 
+                        width: 100%; 
+                        border: 1px solid ${window.cookieConsentOptions.preferenceColor || '#3482F3'}; 
+                        border-radius: 2px; 
+                        cursor: pointer; 
+                        font-weight: 700; 
+                        letter-spacing: .126em; 
+                        display: inline-block; 
+                        min-width: 140px; 
+                        color: #fff; 
+                        text-transform: uppercase;
+                    }
+                </style>
+                <button>${buttonText}</button>
+            `;
+        }
+    }
+    
+    customElements.define('button-consentguard', ButtonConsentGuard);
     
 })();
